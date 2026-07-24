@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <!-- Rich Gradient for Badge Background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <!-- Gradient for Laundry Basket Body -->
+    <linearGradient id="basketGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+
+    <!-- Gradient for Fresh Laundry Clothes -->
+    <linearGradient id="clothesGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#60a5fa" />
+    </linearGradient>
+
+    <!-- Glow/Shadow filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#0f172a" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Rounded Squircle Base Icon Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+
+  <g filter="url(#dropShadow)">
+    <!-- Soap Bubbles popping out top right -->
+    <circle cx="340" cy="120" r="28" fill="#ffffff" opacity="0.9" />
+    <circle cx="280" cy="100" r="38" fill="#bae6fd" opacity="0.85" />
+    <circle cx="210" cy="125" r="26" fill="#ffffff" opacity="0.9" />
+    <circle cx="380" cy="155" r="16" fill="#e0f2fe" opacity="0.8" />
+
+    <!-- Sparkles -->
+    <path d="M 170 120 Q 170 135 155 135 Q 170 135 170 150 Q 170 135 185 135 Q 170 135 170 120 Z" fill="#fef08a" />
+    <path d="M 370 80 Q 370 90 360 90 Q 370 90 370 100 Q 370 90 380 90 Q 370 90 370 80 Z" fill="#ffffff" />
+
+    <!-- Fresh Clean Clothes Heap inside basket -->
+    <path d="M 130 220 C 130 165, 190 165, 230 190 C 265 155, 340 155, 370 200 C 390 190, 410 220, 385 240 L 125 240 Z" fill="url(#clothesGrad)" />
+
+    <!-- Laundry Basket Handles / Top Rim -->
+    <rect x="100" y="230" width="312" height="36" rx="18" fill="#ffffff" />
+    
+    <!-- Basket Main Body (Trapezoid with rounded corners) -->
+    <path d="M 120 260 L 155 420 C 160 442, 178 456, 200 456 L 312 456 C 334 456, 352 442, 357 420 L 392 260 Z" fill="url(#basketGrad)" />
+
+    <!-- Basket Slots / Air Vent Cutouts (Top Row) -->
+    <rect x="175" y="288" width="38" height="52" rx="10" fill="#0284c7" opacity="0.9" />
+    <rect x="237" y="288" width="38" height="52" rx="10" fill="#0284c7" opacity="0.9" />
+    <rect x="299" y="288" width="38" height="52" rx="10" fill="#0284c7" opacity="0.9" />
+
+    <!-- Basket Slots / Air Vent Cutouts (Bottom Row) -->
+    <rect x="190" y="360" width="34" height="48" rx="8" fill="#0284c7" opacity="0.9" />
+    <rect x="239" y="360" width="34" height="48" rx="8" fill="#0284c7" opacity="0.9" />
+    <rect x="288" y="360" width="34" height="48" rx="8" fill="#0284c7" opacity="0.9" />
+  </g>
+</svg>
