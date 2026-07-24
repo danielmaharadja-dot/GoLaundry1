@@ -45,22 +45,22 @@ export default function Register() {
   return (
     <div className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-blue-50 to-indigo-100 px-4 py-10 overflow-hidden">
       {/* Background Busa Sabun Bergerak */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
         {bubbles.map((b, index) => (
           <div
             key={index}
-            className={`absolute bottom-0 rounded-full bg-gradient-to-tr from-cyan-400/35 via-blue-300/45 to-white/90 border-2 border-white/90 shadow-lg shadow-cyan-300/40 backdrop-blur-[1px] animate-bubble ${b.size} ${b.left}`}
+            className={`fixed bottom-0 rounded-full bg-gradient-to-tr from-cyan-400/40 via-sky-300/50 to-white/95 border-2 border-white shadow-xl shadow-cyan-300/50 backdrop-blur-[1px] animate-bubble ${b.size} ${b.left}`}
             style={{
               animationDuration: b.duration,
               animationDelay: b.delay,
             }}
           >
-            <div className="absolute top-[15%] left-[20%] w-[30%] h-[30%] bg-white/95 rounded-full blur-[0.5px]" />
+            <div className="absolute top-[15%] left-[20%] w-[30%] h-[30%] bg-white rounded-full blur-[0.5px]" />
             <div className="absolute top-[10%] left-[12%] w-[15%] h-[15%] bg-white rounded-full shadow-sm" />
           </div>
         ))}
-
       </div>
+
 
       <div className="relative z-10 w-full max-w-sm">
         <div className="text-center mb-8">

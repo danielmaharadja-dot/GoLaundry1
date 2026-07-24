@@ -75,8 +75,12 @@
 }
 
 .animate-bubble {
-  animation: bubbleFloat linear infinite;
+  animation-name: bubbleFloat;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
 }
+
 
 
 
