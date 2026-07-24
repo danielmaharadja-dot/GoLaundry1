@@ -70,6 +70,14 @@ async function initDb() {
       console.log("Database schema updated: Added eta_hours_express column to services table.");
     }
 
+    // Migrasi kolom price_express pada services
+    const [priceExpColumns] = await pool.query("SHOW COLUMNS FROM services LIKE 'price_express'");
+    if (priceExpColumns.length === 0) {
+      await pool.query("ALTER TABLE services ADD COLUMN price_express DECIMAL(10,2) NULL");
+      await pool.query("UPDATE services SET price_express = price * 1.5 WHERE price_express IS NULL");
+      console.log("Database schema updated: Added price_express column to services table.");
+    }
+
     // Inisialisasi tabel reviews
     await pool.query(`
       CREATE TABLE IF NOT EXISTS reviews (
@@ -109,6 +117,22 @@ async function initDb() {
     if (cancelColumns.length === 0) {
       await pool.query("ALTER TABLE orders ADD COLUMN cancel_reason TEXT NULL");
       console.log("Database schema updated: Added cancel_reason column to orders table.");
+    }
+
+    // Migrasi kolom delivery_type dan service_type pada orders
+    const [delTypeColumns] = await pool.query("SHOW COLUMNS FROM orders LIKE 'delivery_type'");
+    if (delTypeColumns.length === 0) {
+      await pool.query("ALTER TABLE orders ADD COLUMN delivery_type VARCHAR(50) DEFAULT 'pickup_delivery'");
+      await pool.query("ALTER TABLE orders ADD COLUMN service_type VARCHAR(50) DEFAULT 'reguler'");
+      console.log("Database schema updated: Added delivery_type and service_type columns to orders table.");
+    }
+
+    // Migrasi kolom payment_method dan payment_proof pada orders
+    const [payMethodColumns] = await pool.query("SHOW COLUMNS FROM orders LIKE 'payment_method'");
+    if (payMethodColumns.length === 0) {
+      await pool.query("ALTER TABLE orders ADD COLUMN payment_method VARCHAR(50) NULL");
+      await pool.query("ALTER TABLE orders ADD COLUMN payment_proof VARCHAR(255) NULL");
+      console.log("Database schema updated: Added payment_method and payment_proof columns to orders table.");
     }
 
     // Inisialisasi tabel settings untuk konfigurasi diskon
