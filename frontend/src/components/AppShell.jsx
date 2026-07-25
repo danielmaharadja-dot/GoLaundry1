@@ -104,43 +104,51 @@ export default function AppShell({ children }) {
       </aside>
 
       {/* Top bar mobile */}
-      <header className="md:hidden flex items-center justify-between px-4 py-4 bg-blue-950 text-white sticky top-0 z-20">
+      <header className="md:hidden flex items-center justify-between px-4 py-3.5 bg-blue-950 text-white sticky top-0 z-30 shadow-md border-b border-blue-900/40">
         <div className="flex items-center gap-2">
           <span className="text-xl">🧺</span>
-          <span className="font-display font-bold"><span className="text-blue-400">Go</span><span className="text-white">Laundry</span></span>
+          <span className="font-display font-bold text-lg tracking-tight"><span className="text-blue-400">Go</span><span className="text-white">Laundry</span></span>
         </div>
-        <button onClick={handleLogout} className="text-sm text-blue-100/80 font-medium">
-          Keluar
-        </button>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-blue-200/80 bg-blue-900/60 px-2.5 py-1 rounded-full font-medium">
+            {user?.name?.split(" ")[0]}
+          </span>
+          <button
+            onClick={handleLogout}
+            className="text-xs text-blue-300 hover:text-white font-semibold bg-blue-900/40 hover:bg-blue-900 px-2.5 py-1 rounded-lg transition-colors"
+          >
+            Keluar
+          </button>
+        </div>
       </header>
 
       {/* Konten utama */}
-      <main className="flex-1 md:ml-60 lg:ml-72 pb-20 md:pb-8 px-4 py-5 md:px-8 md:py-8 max-w-[1400px] w-full mx-auto min-w-0 overflow-x-auto break-words">
+      <main className="flex-1 md:ml-60 lg:ml-72 pb-24 md:pb-8 px-4 py-5 md:px-8 md:py-8 max-w-[1400px] w-full mx-auto min-w-0">
         {children}
       </main>
 
       {/* Bottom nav mobile */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-blue-950/10 flex items-center overflow-x-auto no-scrollbar scroll-touch justify-around gap-1 px-2 py-2 z-20 shadow-lg">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-blue-950/10 flex items-center justify-between px-2 py-1.5 pb-[calc(0.375rem+env(safe-area-inset-bottom,0px))] z-30 shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
         {navItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
             end={item.to === "/app" || item.to === "/admin"}
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center gap-0.5 px-2 py-1.5 rounded-xl text-xs font-medium transition-colors flex-1 min-w-[56px] ${
-                isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-ink/50 hover:text-ink/80"
+              `flex flex-col items-center justify-center py-1 px-1 rounded-xl transition-all duration-200 flex-1 min-w-0 ${
+                isActive ? "text-blue-600 font-semibold bg-blue-50/90" : "text-ink/50 hover:text-ink/80"
               }`
             }
           >
             <div className="relative flex items-center justify-center">
-              <span className="text-lg" aria-hidden="true">{item.icon}</span>
+              <span className="text-lg leading-none" aria-hidden="true">{item.icon}</span>
               {item.to === "/admin/pesanan" && pendingOnlineCount > 0 && (
-                <span className="absolute -top-1.5 -right-3 bg-rose-500 text-white text-[9px] font-bold h-4 min-w-[16px] px-1 rounded-full flex items-center justify-center animate-pulse shadow-sm">
+                <span className="absolute -top-1 -right-2.5 bg-rose-500 text-white text-[9px] font-bold h-3.5 min-w-[14px] px-1 rounded-full flex items-center justify-center animate-pulse shadow-sm">
                   {pendingOnlineCount}
                 </span>
               )}
             </div>
-            <span className="truncate w-full text-center">{item.label}</span>
+            <span className="text-[10px] tracking-tight truncate w-full text-center mt-0.5">{item.label}</span>
           </NavLink>
         ))}
       </nav>

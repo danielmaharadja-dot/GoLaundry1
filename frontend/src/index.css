@@ -9,7 +9,7 @@
   }
   body {
     @apply bg-blue-50 text-ink antialiased;
-    overflow-x: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
   h1, h2, h3, h4 {
@@ -32,7 +32,7 @@
     @apply bg-coral-500 text-white font-semibold px-5 py-3 rounded-xl2 hover:bg-coral-600 transition-colors disabled:opacity-50;
   }
   .card {
-    @apply bg-white rounded-xl2 shadow-sm shadow-blue-950/5 p-5 overflow-x-auto;
+    @apply bg-white rounded-xl2 shadow-sm shadow-blue-950/5 p-4 sm:p-5 overflow-hidden;
   }
   .input {
     @apply w-full rounded-xl border border-blue-900/15 bg-white px-4 py-3 text-ink placeholder:text-ink/40 focus:border-blue-700 outline-none transition-colors;
