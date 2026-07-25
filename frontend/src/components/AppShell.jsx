@@ -120,14 +120,14 @@ export default function AppShell({ children }) {
       </main>
 
       {/* Bottom nav mobile */}
-      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-blue-950/10 flex items-center overflow-x-auto no-scrollbar scroll-touch justify-start sm:justify-around gap-1 px-2 py-2 z-20 shadow-lg">
+      <nav className="md:hidden fixed bottom-0 inset-x-0 bg-white border-t border-blue-950/10 flex items-center overflow-x-auto no-scrollbar scroll-touch justify-around gap-1 px-2 py-2 z-20 shadow-lg">
         {navItems.map((item) => (
           <NavLink
             key={item.to}
             to={item.to}
             end={item.to === "/app" || item.to === "/admin"}
             className={({ isActive }) =>
-              `flex flex-col items-center justify-center gap-0.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors shrink-0 min-w-[64px] ${
+              `flex flex-col items-center justify-center gap-0.5 px-2 py-1.5 rounded-xl text-xs font-medium transition-colors flex-1 min-w-[56px] ${
                 isActive ? "text-blue-600 font-semibold bg-blue-50/80" : "text-ink/50 hover:text-ink/80"
               }`
             }
@@ -140,7 +140,7 @@ export default function AppShell({ children }) {
                 </span>
               )}
             </div>
-            <span className="truncate max-w-[72px] text-center">{item.label}</span>
+            <span className="truncate w-full text-center">{item.label}</span>
           </NavLink>
         ))}
       </nav>
